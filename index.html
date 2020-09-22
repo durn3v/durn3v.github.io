@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Константин и Ирина (17.10.2020)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;700&family=Marck+Script&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+      background: #642930;
+    }
+
+    .container {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+
+    .header {
+      position: relative;
+      background: url(https://puu.sh/GsEag/2b2c377ed8.jpg) center / cover;
+      height: 300px;
+    }
+
+    .header:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(100, 41, 48, 0) 0%, rgba(100, 41, 48, 1) 100%);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      margin: -8px 0 0;
+      padding: 0 24px;
+      font-family: 'Cormorant SC', serif;
+      color: #f0ecd3;
+    }
+
+    .content__title {
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: 0.2px;
+    }
+
+    .content__map {
+      margin: 36px 0 0;
+    }
+
+    .content__map a {
+      color: inherit;
+    }
+
+    .content__date {
+      margin: 40px 0 0;
+      font-size: 22px;
+    }
+
+    .content__names {
+      margin: 40px 0 0;
+      font-family: 'Marck Script', cursive;
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .content__action {
+      margin: 60px 0 0;
+    }
+
+    .content__action-btn:not(:first-child) {
+      margin: 16px 0 0;
+    }
+
+    .content__action-btn:last-child {
+      margin: 40px 0 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+      background: #1f0d0f;
+      height: 48px;
+      padding: 0 32px;
+      font-size: 18px;
+      border-radius: 48px;
+      text-decoration: none;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .btn.--text {
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border-bottom: 1px solid;
+      border-radius: 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="header">
+    </div>
+    
+    <div class="content">
+      <div v-if="result">
+        <div class="content__title">
+          Спасибо за ответ!<br><br>
+          <span v-html="options[result].address"></span>
+        </div>
+
+        <div
+          v-if="options[result].link"
+          class="content__map"
+        >
+          <a :href="options[result].link" target="_blank">Посмотреть на карте</a>
+        </div>
+      </div>
+
+      <div v-if="result === null">
+        <div class="content__title">
+          {{ name }},<br>
+          будем очень рады видеть <br>
+          вас на&nbsp;нашей свадьбе!
+        </div>
+  
+        <div class="content__names">
+          Константин<br>и<br>Ирина
+        </div>
+  
+        <div class="content__date">
+          суббота,
+          17 октября 2020
+        </div>
+  
+        <div
+          v-if="isLoading"
+          class="content__action"
+        >
+          Загрузка...
+        </div>
+  
+        <div
+          class="content__action"
+          v-if="!isLoading"
+        >
+          <div class="content__action-btn">
+            <a @click.prevent="onSendAnswer('zags_rest')"  class="btn">Приду в ЗАГС и ресторан</a>
+          </div>
+  
+          <div class="content__action-btn">
+            <a @click.prevent="onSendAnswer('rest')" class="btn">Приду только в ресторан</a>
+          </div>
+  
+          <div class="content__action-btn">
+            <a @click.prevent="onSendAnswer('zags')"  class="btn">Приду только в ЗАГС</a>
+          </div>
+  
+          <div class="content__action-btn">
+            <a @click.prevent="onSendAnswer('no')"  class="btn --text">не приду</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var app = new Vue({
+      el: '#app',
+
+      data() {
+        return {
+          isLoading: false,
+          result: null,
+          options: {
+            zags_rest: {
+              answer: 'ЗАГС и ресторан',
+              address: 'Ждем вас <b>17 октября в 14:30</b> по адресу: <br>г. Ростов-на-Дону, Университетский 48 <br>(ЗАГС Кировского района)',
+              link: 'https://www.google.com/maps/place/Otdel+Zags+Kirovskogo+Rayona/@47.2261124,39.7257628,17z/data=!3m1!4b1!4m5!3m4!1s0x40e3b9a8f82b0a17:0xf0dd5e1426e1b702!8m2!3d47.2261124!4d39.7279515',
+            },
+            
+            rest: {
+              answer: 'Только ресторан',
+              address: 'Ждем вас <b>17 октября в 18:00</b> по адресу: <br>г. Ростов-на-Дону, Белорусская 215 <br>(Ресторан Шарден)',
+              link: 'https://www.google.com/maps/place/Sharden+Restoran/@47.2840411,39.7230022,16.01z/data=!4m12!1m6!3m5!1s0x0:0x559daf72e92e937e!2sSharden+Restoran!8m2!3d47.2841993!4d39.7264608!3m4!1s0x0:0x559daf72e92e937e!8m2!3d47.2841993!4d39.7264608'
+            },
+            
+            zags: {
+              answer: 'Только загс',
+              address: 'Ждем вас <b>17 октября в 14:30</b> по адресу: <br>г. Ростов-на-Дону, Университетский 48 <br>(ЗАГС Кировского района)',
+              link: 'https://www.google.com/maps/place/Otdel+Zags+Kirovskogo+Rayona/@47.2261124,39.7257628,17z/data=!3m1!4b1!4m5!3m4!1s0x40e3b9a8f82b0a17:0xf0dd5e1426e1b702!8m2!3d47.2261124!4d39.7279515',
+            },
+            
+            no: {
+              answer: 'Не придут',
+              address: '',
+            },
+          },
+        }
+      },
+      
+      computed: {
+        name() {
+          return getParameterByName('name');
+        },
+      },
+      
+      mounted() {
+        const initResult = localStorage.getItem('result');
+
+        if (initResult) {
+          this.result = initResult;
+        }
+      },
+      
+      methods: {
+        async onSendAnswer(option) {
+          try {
+            const { address, answer } = this.options[option];
+            this.isLoading = true;
+
+            await axios({
+              url: 'https://script.google.com/macros/s/AKfycbwgXSb4oYhKWI3sfu0gKobbwHKRddgkpQUmaavSQGsLvKIEoNsq/exec',
+              method: 'GET',
+              params: {
+                name: this.name,
+                answer,
+              }
+            });
+            
+            this.result = option;
+            localStorage.setItem('result', option);
+          } catch (error) {
+            console.log(error) 
+          } finally {
+            this.isLoading = false;
+          }
+        },
+      },
+    });
+  </script>
+</body>
+</html>

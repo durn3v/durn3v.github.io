@@ -1,0 +1,396 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Кире 2 годика</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Neucha&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Layout: one invitation card under an open sky — goose and pigeon on a grassy hill, then the details. */
+:root {
+  --sky: #cfe6f5;
+  --sky-2: #eaf4fb;
+  --grass: #9fd08a;
+  --grass-2: #7fbb6a;
+  --card: #ffffff;
+  --ink: #23364a;
+  --muted: #5b6f84;
+  --beak: #f39a2b;
+  --sun: #ffd45c;
+  --goose: #ffffff;
+  --goose-wing: #e3ebf2;
+  --pigeon: #a9b4c6;
+  --pigeon-dark: #7d8aa1;
+  --neck-a: #5bb8a6;
+  --neck-b: #9a7cc4;
+  --leg: #f08aa0;
+  --line: #d6e3ee;
+  --font-display: "Neucha", "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sky: #1b2a44; --sky-2: #24375a; --grass: #3f6b45; --grass-2: #33583a;
+    --card: #1f2b3d; --ink: #eef3fa; --muted: #a9b8cb; --sun: #f3d27a;
+    --goose: #f4f6fa; --goose-wing: #d3dce7; --pigeon: #9aa6ba; --pigeon-dark: #6f7c93;
+    --line: #34445c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --sky: #1b2a44; --sky-2: #24375a; --grass: #3f6b45; --grass-2: #33583a;
+  --card: #1f2b3d; --ink: #eef3fa; --muted: #a9b8cb; --sun: #f3d27a;
+  --goose: #f4f6fa; --goose-wing: #d3dce7; --pigeon: #9aa6ba; --pigeon-dark: #6f7c93;
+  --line: #34445c; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-x: clip; }
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+body {
+  background: linear-gradient(180deg, var(--sky) 0%, var(--sky-2) 70%);
+  background-color: var(--sky);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  min-height: 100%;
+}
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- hero scene ---------- */
+.scene {
+  position: relative;
+  text-align: center;
+  padding-top: 40px;
+}
+.sun {
+  position: absolute; top: -6px; right: 4px;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--sun) 30%, transparent);
+}
+.cloud {
+  position: absolute; top: 10px; left: 8px;
+  width: 70px; height: 20px; border-radius: 20px;
+  background: var(--sky-2);
+  opacity: .9;
+}
+.cloud::before, .cloud::after {
+  content: ""; position: absolute; background: inherit; border-radius: 50%;
+}
+.cloud::before { width: 30px; height: 30px; left: 10px; top: -14px; }
+.cloud::after { width: 22px; height: 22px; left: 34px; top: -9px; }
+
+.rhyme {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: .02em;
+}
+.rhyme span { display: block; }
+h1 {
+  position: relative;
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 13vw, 4.6rem);
+  line-height: 1;
+  text-wrap: balance;
+}
+h1 .two {
+  display: inline-block;
+  color: var(--beak);
+  font-size: 1.5em;
+  line-height: .8;
+  transform: rotate(-6deg);
+  margin-inline: .05em;
+}
+.sub {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 8px 0 0;
+}
+
+.meadow {
+  position: relative;
+  height: clamp(200px, 62vw, 270px);
+  margin-top: 6px;
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+}
+.ground { position: absolute; inset: 0; overflow: hidden; }
+.hill {
+  position: absolute; left: -10%; right: -10%; bottom: 0;
+  height: 70px;
+  background: var(--grass);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+.hill.back {
+  height: 54px; bottom: 18px; left: 20%; right: -20%;
+  background: var(--grass-2);
+}
+.bird { position: absolute; bottom: 30px; }
+.bird.goose { left: 5%; width: 46%; max-width: 210px; }
+.bird.pigeon { right: 6%; width: 34%; max-width: 150px; bottom: 34px; }
+.bird svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .goose svg { animation: waddle 2.4s ease-in-out infinite; transform-origin: 50% 100%; }
+  .pigeon svg { animation: peck 3.2s ease-in-out infinite; transform-origin: 60% 100%; }
+  .feather { animation: drift 9s linear infinite; }
+}
+@keyframes waddle { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg) translateY(-2px); } }
+@keyframes peck { 0%,70%,100% { transform: rotate(0); } 78% { transform: rotate(-12deg); } 86% { transform: rotate(0); } 92% { transform: rotate(-10deg); } }
+@keyframes drift { 0% { transform: translate(0,0) rotate(0); } 50% { transform: translate(8px,14px) rotate(40deg); } 100% { transform: translate(0,28px) rotate(0); opacity: 0; } }
+
+.feather {
+  position: absolute;
+  width: 14px; height: 28px;
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  background: var(--goose);
+  border: 2px solid var(--line);
+}
+.feather.f1 { top: 14px; left: 53%; }
+
+/* ---------- card ---------- */
+.card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 26px 22px;
+  box-shadow: 0 10px 30px -12px rgba(35, 54, 74, .35);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.lead {
+  margin: 0;
+  font-size: 1.08rem;
+  text-align: center;
+}
+.lead strong { font-weight: 800; }
+
+.facts {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+.fact {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border: 2px dashed var(--line);
+  border-radius: 16px;
+}
+.fact .ic {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--sky-2);
+}
+.fact .ic svg { width: 28px; height: 28px; }
+.fact dt {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.fact dd { margin: 2px 0 0; font-size: 1.15rem; font-weight: 800; min-width: 0; }
+.fact dd span { display: block; font-weight: 400; font-size: 1rem; color: var(--muted); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  flex: 1 1 180px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font: 600 1rem var(--font-body);
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.primary { background: var(--beak); border-color: var(--beak); color: #2a1a05; }
+.btn:focus-visible { outline: 3px solid var(--neck-a); outline-offset: 3px; }
+.btn:hover { transform: translateY(-1px); }
+
+.countdown {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0;
+}
+.countdown b { color: var(--beak); font-weight: 400; font-size: 1.6em; font-variant-numeric: tabular-nums; }
+
+.closing {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0;
+  text-wrap: balance;
+}
+@media (max-width: 360px) {
+  .card { padding: 22px 14px; }
+  .fact { grid-template-columns: 1fr; padding: 12px 14px; text-align: center; }
+  .fact .ic { display: none; }
+  .fact dd { font-size: 1.05rem; }
+}
+</style>
+
+<main class="wrap">
+  <section class="scene" aria-label="Приглашение">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="cloud" aria-hidden="true"></div>
+    <p class="rhyme"><span>Гуси-гуси! — Га-га-га!</span><span>Гули-гули-гули!</span></p>
+    <h1>Кире <span class="two">2</span> годика!</h1>
+    <p class="sub">Приглашаем на праздник</p>
+
+    <div class="meadow" aria-hidden="true">
+      <span class="feather f1"></span>
+      <div class="ground"><div class="hill back"></div><div class="hill"></div></div>
+
+      <!-- Goose -->
+      <div class="bird goose">
+        <svg viewBox="0 0 200 200">
+          <g stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M84 166 L80 188 M80 188 L68 192 M80 188 L90 193" fill="none" stroke="var(--beak)" stroke-width="5"/>
+            <path d="M106 166 L108 188 M108 188 L96 193 M108 188 L118 192" fill="none" stroke="var(--beak)" stroke-width="5"/>
+            <path d="M38 122 L10 102 L22 132 L40 146 Z" fill="var(--goose-wing)"/>
+            <ellipse cx="92" cy="132" rx="62" ry="38" fill="var(--goose)"/>
+            <path d="M128 120 C150 100 136 72 148 50" fill="none" stroke="var(--ink)" stroke-width="27"/>
+            <path d="M128 120 C150 100 136 72 148 50" fill="none" stroke="var(--goose)" stroke-width="21"/>
+            <circle cx="152" cy="46" r="17" fill="var(--goose)"/>
+            <path d="M166 40 L192 47 L166 55 Z" fill="var(--beak)"/>
+            <path d="M58 128 C78 102 122 106 126 132 C106 150 74 148 58 128 Z" fill="var(--goose-wing)"/>
+            <path d="M78 130 C90 124 104 124 114 132" fill="none" stroke-width="2.5"/>
+          </g>
+          <circle cx="156" cy="41" r="3.5" fill="var(--ink)"/>
+          <path d="M154 30 C150 22 158 18 160 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- party hat -->
+          <path d="M140 33 L150 4 L164 32 Z" fill="var(--neck-b)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="150" cy="4" r="5" fill="var(--sun)" stroke="var(--ink)" stroke-width="2.5"/>
+          <path d="M145 22 L159 22" stroke="var(--sun)" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <!-- Pigeon -->
+      <div class="bird pigeon">
+        <svg viewBox="0 0 160 140">
+          <defs>
+            <linearGradient id="neck" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--neck-a)"/>
+              <stop offset="1" stop-color="var(--neck-b)"/>
+            </linearGradient>
+          </defs>
+          <g stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M74 110 L70 130 M70 130 L60 134 M70 130 L78 135 M96 110 L98 130 M98 130 L88 135 M98 130 L106 134" fill="none" stroke="var(--leg)" stroke-width="4.5"/>
+            <path d="M126 70 L158 62 L152 96 L124 92 Z" fill="var(--pigeon-dark)"/>
+            <ellipse cx="86" cy="82" rx="50" ry="33" fill="var(--pigeon)"/>
+            <ellipse cx="54" cy="66" rx="20" ry="17" fill="url(#neck)"/>
+            <circle cx="44" cy="46" r="20" fill="var(--pigeon)"/>
+            <path d="M26 42 L8 50 L26 54 Z" fill="var(--pigeon-dark)"/>
+            <path d="M74 74 C92 58 124 66 128 86 C110 98 86 96 74 74 Z" fill="var(--pigeon)"/>
+            <path d="M92 74 L100 88 M104 72 L112 88" fill="none" stroke="var(--pigeon-dark)" stroke-width="5"/>
+          </g>
+          <circle cx="40" cy="42" r="5" fill="var(--beak)"/>
+          <circle cx="40" cy="42" r="2.4" fill="var(--ink)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Детали праздника">
+    <p class="lead">
+      Дорогие друзья! Нашей <strong>Кире</strong> исполняется <strong>2&nbsp;годика</strong>,
+      и мы приглашаем вас разделить с нами этот день. Будут угощения, смех, веселье
+      и целая стая хорошего настроения.
+    </p>
+
+    <dl class="facts">
+      <div class="fact">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        </div>
+        <div>
+          <dt>Когда</dt>
+          <dd>7 ноября, суббота <span>начало в 17:00</span></dd>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div>
+          <dt>Где</dt>
+          <dd>«Граф Графыч» <span id="addr">ул.&nbsp;Левобережная,&nbsp;60</span></dd>
+        </div>
+      </div>
+    </dl>
+
+    <div class="actions">
+      <a class="btn primary" href="https://yandex.ru/maps/?text=%D0%93%D1%80%D0%B0%D1%84%20%D0%93%D1%80%D0%B0%D1%84%D1%8B%D1%87%2C%20%D0%9B%D0%B5%D0%B2%D0%BE%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%2060" target="_blank" rel="noopener">Открыть на карте</a>
+      <button class="btn" id="copy" type="button">Скопировать адрес</button>
+    </div>
+
+    <p class="countdown" id="countdown" aria-live="polite"></p>
+  </section>
+
+  <p class="closing">Ждём вас! Гуси и голуби уже собираются в стаю.</p>
+</main>
+
+<script>
+(function () {
+  var party = new Date("2026-11-07T17:00:00+03:00");
+  var el = document.getElementById("countdown");
+  function plural(n, one, few, many) {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+  function render() {
+    var ms = party - new Date();
+    if (ms <= 0) {
+      el.textContent = ms > -4 * 3600e3 ? "Праздник уже начался!" : "Спасибо, что были с нами!";
+      return;
+    }
+    var days = Math.floor(ms / 86400e3);
+    var hours = Math.floor((ms % 86400e3) / 3600e3);
+    if (days >= 1) {
+      el.innerHTML = "До праздника <b>" + days + "</b> " + plural(days, "день", "дня", "дней");
+    } else {
+      el.innerHTML = "До праздника <b>" + hours + "</b> " + plural(hours, "час", "часа", "часов");
+    }
+  }
+  render();
+  setInterval(render, 60000);
+
+  var btn = document.getElementById("copy");
+  var text = "«Граф Графыч», ул. Левобережная, 60";
+  btn.addEventListener("click", function () {
+    function done() { btn.textContent = "Адрес скопирован"; setTimeout(function(){ btn.textContent = "Скопировать адрес"; }, 2000); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("addr"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Адрес выделен";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
